@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:lottie/lottie.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -24,8 +26,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.red[800],
+      body: Expanded(
+        child: Lottie.asset('assets/lotties/iron-man.json'),
       ),
     );
   }
