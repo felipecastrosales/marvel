@@ -26,7 +26,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Expanded(
+      body: Container(
+        color: Colors.red[800],
         child: Lottie.asset('assets/lotties/iron-man.json'),
       ),
     );
