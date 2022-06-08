@@ -7,7 +7,6 @@ class Result {
   int? id;
   String? name;
   String? description;
-
   Thumbnail? thumbnail;
   String? resourceUri;
   Comics? comics;

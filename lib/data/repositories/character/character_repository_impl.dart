@@ -1,6 +1,6 @@
-import 'package:marvel/data/constants/constants.dart';
+import 'package:marvel/data/constants/constants_api.dart';
 import 'package:marvel/data/models/character/data.dart';
-import 'package:marvel/data/services/dio/dio.dart';
+import 'package:marvel/data/services/dio/dio_service.dart';
 
 import 'character_repository.dart';
 
@@ -18,9 +18,9 @@ class CharacterRepositoryImpl implements CharacterRepository {
     const apiKey = ConstantsAPI.apiKey;
     const hash = ConstantsAPI.hash;
     var queryParameters = {
-      'ts': '1616695783',
-      'apikey': 'da0b41050b1361bf58011d9e4bb93ec3',
-      'hash': '1df52d550f27af8de3135f5aa07c664f',
+      'ts': '1',
+      'apikey': 'ef1f7f18b6d13fbbacd8e3f592c077ec',
+      'hash': '757043f80f62362a7b62a2dfad3d59ad',
     };
     var response = await dio.get(
       ConstantsAPI.characters,
@@ -30,3 +30,30 @@ class CharacterRepositoryImpl implements CharacterRepository {
     return Data.fromJson(response.data);
   }
 }
+
+
+
+//   @override
+//   Future<Data> getCharacter() async {
+//     // final Response? response;
+//     var dio = _dioService.getDio();
+//     var queryParameters = {
+//       'ts': '1616695783',
+//       'apikey': 'da0b41050b1361bf58011d9e4bb93ec3',
+//       'hash': '1df52d550f27af8de3135f5aa07c664f',
+//     };
+//     var response = await dio.get(
+//       ConstantsAPI.characters,
+//       queryParameters: queryParameters,
+//     );
+//     developer.log(response.data);
+//     return Data.fromJson(response.data);
+//     // try {
+//     // } catch (e, s) {
+//     //   developer.log('$e', name: 'Error:');
+//     //   developer.log('$s', name: 'StackTrace:');
+//     //   throw CharacterException('Error to load Characters');
+//     // }
+//   }
+// }
+

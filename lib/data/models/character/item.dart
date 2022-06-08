@@ -4,7 +4,10 @@ class Item {
   String? resourceUri;
   String? name;
 
-  Item({this.resourceUri, this.name});
+  Item({
+    this.resourceUri,
+    this.name,
+  });
 
   @override
   String toString() => 'Item(resourceUri: $resourceUri, name: $name)';

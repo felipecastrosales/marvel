@@ -28,7 +28,7 @@ class Data {
         total: data['total'] as int?,
         count: data['count'] as int?,
         results: (data['results'] as List<dynamic>?)
-            ?.map((e) => Result.fromMap(e as Map<String, dynamic>))
+            ?.map((result) => Result.fromMap(result as Map<String, dynamic>))
             .toList(),
       );
 
