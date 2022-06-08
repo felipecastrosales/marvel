@@ -1,7 +1,27 @@
-import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
 
-class HomePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+
+import 'controller/controller.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final _controller = HomeController();
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _controller.fetchCharacters();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
