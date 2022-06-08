@@ -16,16 +16,12 @@ class CharacterRepositoryImpl implements CharacterRepository {
 
   @override
   Future<Data> getCharacter() async {
-    // final Response? response;
     var dio = _dioService.getDio();
     const ts = ConstantsAPI.timeStamp;
     const apiKey = ConstantsAPI.apiKey;
     const hash = ConstantsAPI.hash;
-    var queryParameters = {
-      'ts': ts,
-      'apikey': apiKey,
-      'hash': hash,
-    };
+    var queryParameters = {'ts': ts, 'apikey': apiKey, 'hash': hash};
+
     try {
       var response = await dio.get(
         ConstantsAPI.characters,
@@ -42,30 +38,3 @@ class CharacterRepositoryImpl implements CharacterRepository {
     }
   }
 }
-
-
-
-//   @override
-//   Future<Data> getCharacter() async {
-//     // final Response? response;
-//     var dio = _dioService.getDio();
-//     var queryParameters = {
-//       'ts': '1616695783',
-//       'apikey': 'da0b41050b1361bf58011d9e4bb93ec3',
-//       'hash': '1df52d550f27af8de3135f5aa07c664f',
-//     };
-//     var response = await dio.get(
-//       ConstantsAPI.characters,
-//       queryParameters: queryParameters,
-//     );
-//     developer.log(response.data);
-//     return Data.fromJson(response.data);
-//     // try {
-//     // } catch (e, s) {
-//     //   developer.log('$e', name: 'Error:');
-//     //   developer.log('$s', name: 'StackTrace:');
-//     //   throw CharacterException('Error to load Characters');
-//     // }
-//   }
-// }
-
