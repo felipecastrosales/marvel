@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'item.dart';
 
 class Comics {
-  int? available;
-  String? collectionUri;
+  int available;
+  String collectionUri;
   List<Item>? items;
-  int? returned;
+  int returned;
 
   Comics({
-    this.available,
-    this.collectionUri,
+    required this.available,
+    required this.collectionUri,
     this.items,
-    this.returned,
+    required this.returned,
   });
 
   @override
@@ -21,12 +21,12 @@ class Comics {
   }
 
   factory Comics.fromMap(Map<String, dynamic> data) => Comics(
-        available: data['available'] as int?,
-        collectionUri: data['collectionURI'] as String?,
+        available: data['available'] ?? 0,
+        collectionUri: data['collectionURI'] ?? '',
         items: (data['items'] as List<dynamic>?)
             ?.map((items) => Item.fromMap(items as Map<String, dynamic>))
             .toList(),
-        returned: data['returned'] as int?,
+        returned: data['returned'] ?? 0,
       );
 
   Map<String, dynamic> toMap() => {

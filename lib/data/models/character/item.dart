@@ -1,20 +1,20 @@
 import 'dart:convert';
 
 class Item {
-  String? resourceUri;
-  String? name;
+  String resourceUri;
+  String name;
 
   Item({
-    this.resourceUri,
-    this.name,
+    required this.resourceUri,
+    required this.name,
   });
 
   @override
   String toString() => 'Item(resourceUri: $resourceUri, name: $name)';
 
   factory Item.fromMap(Map<String, dynamic> data) => Item(
-        resourceUri: data['resourceURI'] as String?,
-        name: data['name'] as String?,
+        resourceUri: data['resourceURI'] ?? '',
+        name: data['name'] ?? '',
       );
 
   Map<String, dynamic> toMap() => {

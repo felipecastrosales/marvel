@@ -3,18 +3,18 @@ import 'dart:convert';
 import 'result.dart';
 
 class Data {
-  int? offset;
-  int? limit;
-  int? total;
-  int? count;
+  int offset;
+  int limit;
+  int total;
+  int count;
   List<Result>? results;
 
   Data({
-    this.offset,
-    this.limit,
-    this.total,
-    this.count,
-    this.results,
+    required this.offset,
+    required this.limit,
+    required this.total,
+    required this.count,
+    required this.results,
   });
 
   @override
@@ -23,12 +23,12 @@ class Data {
   }
 
   factory Data.fromMap(Map<String, dynamic> data) => Data(
-        offset: data['offset'] as int?,
-        limit: data['limit'] as int?,
-        total: data['total'] as int?,
-        count: data['count'] as int?,
+        offset: data['offset'] ?? 0,
+        limit: data['limit'] ?? 0,
+        total: data['total'] ?? 0,
+        count: data['count'] ?? 0,
         results: (data['results'] as List<dynamic>?)
-            ?.map((result) => Result.fromMap(result as Map<String, dynamic>))
+            ?.map((result) => Result.fromMap(result))
             .toList(),
       );
 

@@ -10,7 +10,7 @@ class Character {
   String toString() => 'Character(data: $data)';
 
   factory Character.fromMap(Map<String, dynamic> data) => Character(
-        data: Data.fromMap(data['data'] as Map<String, dynamic>),
+        data: Data.fromMap(data['data']),
       );
 
   Map<String, dynamic> toMap() => {

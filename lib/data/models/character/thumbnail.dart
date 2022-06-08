@@ -1,22 +1,25 @@
 import 'dart:convert';
 
 class Thumbnail {
-  String? path;
-  String? extension;
+  String path;
+  String extensions;
 
-  Thumbnail({this.path, this.extension});
+  Thumbnail({
+    required this.path,
+    required this.extensions,
+  });
 
   @override
-  String toString() => 'Thumbnail(path: $path, extension: $extension)';
+  String toString() => 'Thumbnail(path: $path, extension: $extensions)';
 
   factory Thumbnail.fromMap(Map<String, dynamic> data) => Thumbnail(
-        path: data['path'] as String?,
-        extension: data['extension'] as String?,
+        path: data['path'] ?? '',
+        extensions: data['extension'] ?? '',
       );
 
   Map<String, dynamic> toMap() => {
         'path': path,
-        'extension': extension,
+        'extension': extensions,
       };
 
   factory Thumbnail.fromJson(Map<String, dynamic> data) {

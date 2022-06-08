@@ -4,20 +4,20 @@ import 'comics.dart';
 import 'thumbnail.dart';
 
 class Result {
-  int? id;
-  String? name;
-  String? description;
-  Thumbnail? thumbnail;
-  String? resourceUri;
-  Comics? comics;
+  int id;
+  String name;
+  String description;
+  Thumbnail thumbnail;
+  String resourceUri;
+  Comics comics;
 
   Result({
-    this.id,
-    this.name,
-    this.description,
-    this.thumbnail,
-    this.resourceUri,
-    this.comics,
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.thumbnail,
+    required this.resourceUri,
+    required this.comics,
   });
 
   @override
@@ -26,25 +26,21 @@ class Result {
   }
 
   factory Result.fromMap(Map<String, dynamic> data) => Result(
-        id: data['id'] as int?,
-        name: data['name'] as String?,
-        description: data['description'] as String?,
-        thumbnail: data['thumbnail'] == null
-            ? null
-            : Thumbnail.fromMap(data['thumbnail'] as Map<String, dynamic>),
-        resourceUri: data['resourceURI'] as String?,
-        comics: data['comics'] == null
-            ? null
-            : Comics.fromMap(data['comics'] as Map<String, dynamic>),
+        id: data['id'] ?? 0,
+        name: data['name'] ?? '',
+        description: data['description'] ?? '',
+        thumbnail: Thumbnail?.fromMap(data['thumbnail']),
+        resourceUri: data['resourceURI'] ?? '',
+        comics: Comics?.fromMap(data['comics']),
       );
 
   Map<String, dynamic> toMap() => {
         'id': id,
         'name': name,
         'description': description,
-        'thumbnail': thumbnail?.toMap(),
+        'thumbnail': thumbnail.toMap(),
         'resourceURI': resourceUri,
-        'comics': comics?.toMap(),
+        'comics': comics.toMap(),
       };
 
   factory Result.fromJson(Map<String, dynamic> data) {
