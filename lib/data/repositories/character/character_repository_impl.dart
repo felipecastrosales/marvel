@@ -1,3 +1,7 @@
+import 'dart:developer' as developer;
+
+import 'package:flutter/foundation.dart';
+import 'package:marvel/app/core/exceptions/character_exception.dart';
 import 'package:marvel/data/constants/constants_api.dart';
 import 'package:marvel/data/models/character/data.dart';
 import 'package:marvel/data/services/dio/dio_service.dart';
@@ -18,16 +22,24 @@ class CharacterRepositoryImpl implements CharacterRepository {
     const apiKey = ConstantsAPI.apiKey;
     const hash = ConstantsAPI.hash;
     var queryParameters = {
-      'ts': '1',
-      'apikey': 'ef1f7f18b6d13fbbacd8e3f592c077ec',
-      'hash': '757043f80f62362a7b62a2dfad3d59ad',
+      'ts': ts,
+      'apikey': apiKey,
+      'hash': hash,
     };
-    var response = await dio.get(
-      ConstantsAPI.characters,
-      queryParameters: queryParameters,
-    );
-    print(response.data);
-    return Data.fromJson(response.data);
+    try {
+      var response = await dio.get(
+        ConstantsAPI.characters,
+        queryParameters: queryParameters,
+      );
+      if (kDebugMode) {
+        print(response.data);
+      }
+      return Data.fromJson(response.data);
+    } catch (e, s) {
+      developer.log('$e', name: 'Error:');
+      developer.log('$s', name: 'StackTrace:');
+      throw CharacterException('Error to load Characters');
+    }
   }
 }
 
